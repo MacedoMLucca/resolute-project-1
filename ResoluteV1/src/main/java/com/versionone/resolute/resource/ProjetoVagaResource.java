@@ -2,6 +2,8 @@ package com.versionone.resolute.resource;
 
 import java.util.List;
 
+import javax.persistence.Column;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +20,7 @@ import com.versionone.resolute.repositories.ProjetoVagaRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping({"/cadastroProjeto"})
+@RequestMapping({"/cadastroProjetoVaga"})
 public class ProjetoVagaResource{
 	
 	
@@ -43,22 +45,29 @@ public class ProjetoVagaResource{
 	          .orElse(ResponseEntity.notFound().build());
 	}
 	@PostMapping
-	  public ProjetoVaga create(@RequestBody ProjetoVaga projeto){
-	     return repository.save(projeto);
+	  public ProjetoVaga create(@RequestBody ProjetoVaga projetovaga){
+	     return repository.save(projetovaga);
 	} 
 	  
 	@PutMapping(value="/{id}")
 	public ResponseEntity update(@PathVariable("id") long id,
-	                                        @RequestBody ProjetoVaga projeto) {
-		//return null;
+	                                        @RequestBody ProjetoVaga projetovaga) {
 		return repository.findById(id)
 		           .map(record -> {
-		           record.setTitulo(projeto.getTitulo());
-		           record.setRamo(projeto.getRamo());
-		           record.setDescricao(projeto.getDescricao());
-		           record.setAtividade(projeto.getAtividade());
-		           record.setHabilidade(projeto.getHabilidade());
-		           record.setPrecoHora(projeto.getPrecoHora());
+		           record.setTitulo(projetovaga.getTitulo());
+		           record.setRamo(projetovaga.getRamo());
+		           record.setDescricao(projetovaga.getDescricao());
+		           record.setAtividade(projetovaga.getAtividade());
+		           record.setHabilidade(projetovaga.getHabilidade());
+		           record.setPrecoHora(projetovaga.getPrecoHora());
+		           record.setFisica(projetovaga.getFisica());
+		           record.setMental(projetovaga.getMental());
+		           record.setAuditiva(projetovaga.getAuditiva());
+		           record.setVisual(projetovaga.getVisual());
+		           record.setCategoria(projetovaga.getCategoria());
+		           record.setTempoExperiencia(projetovaga.getTempoExperiencia());
+		           record.setFormaPagamento(projetovaga.getFormaPagamento());
+		           record.setAdaptado(projetovaga.getAdaptado());		           
 		           ProjetoVaga updated = repository.save(record);
 		           return ResponseEntity.ok().body(updated);
 		           }).orElse(ResponseEntity.notFound().build());

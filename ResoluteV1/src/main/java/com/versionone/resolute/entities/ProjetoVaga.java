@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-//@Entity(name="projeto")
+@Table(name = "projetoVaga")
 public class ProjetoVaga{
 	
 	@Id
@@ -27,7 +28,7 @@ public class ProjetoVaga{
 	@Column(length=100)
 	private String ramo;
 	
-	@Column(length=150)
+	@Column(length=255)
 	private String descricao;
 
 	@Column(length=255)
@@ -39,14 +40,31 @@ public class ProjetoVaga{
 	@Column(length=30)
 	private String precoHora;
 	
+	@Column(length=3)
+	private String fisica;
+	
+	@Column(length=3)
+	private String mental;
+	
+	@Column(length=3)
+	private String auditiva;
+	
+	@Column(length=3)
+	private String visual;
+	
+	@Column(length=50)
+	private String categoria;
+	
+	@Column(length=10)
+	private String tempoExperiencia;
+	
+	@Column(length=30)
+	private String formaPagamento;
+	
+	@Column(length=30)
+	private String adaptado;
+	
+	
 }
-
-//Atualizar tabela no banco
-//  --- Drop table projeto
-//  --- Create table projetoVaga
-//Adaptar classe para projrto e vaga 
-
-
-
 
 
