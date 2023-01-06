@@ -1,7 +1,7 @@
 # resolute-project
 Felype
 Matheus
-Gabi 
+Gabriela
 Veronica
 Gabriel
 Breno
